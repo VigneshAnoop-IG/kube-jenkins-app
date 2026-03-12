@@ -4,7 +4,7 @@ pipeline{
         stage("clone"){
             steps{
             retry(3){
-               bat git clone "https://github.com/VigneshAnoop-IG/kube-jenkins-app.git"
+               bat "git clone https://github.com/VigneshAnoop-IG/kube-jenkins-app.git"
                }
             }
         }
@@ -25,5 +25,6 @@ pipeline{
                    }
                }
         }
+
 
 }
