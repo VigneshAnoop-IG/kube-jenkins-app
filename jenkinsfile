@@ -4,7 +4,7 @@ pipeline{
         stage("clone"){
             steps{
             retry(3){
-               bat '"C:\\Users\\Nallabothula.Naidu\\AppData\\Local\\GitHubDesktop\\app-3.5.5\\resources\\app\\git\\cmd\\git.exe" clone https://github.com/VigneshAnoop-IG/kube-jenkins-app.git'
+               git 'https://github.com/VigneshAnoop-IG/kube-jenkins-app.git'
                }
             }
         }
