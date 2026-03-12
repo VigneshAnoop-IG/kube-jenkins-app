@@ -1,5 +1,9 @@
 pipeline{
     agent any
+tools{
+jdk "java25"
+maven "maven"
+}
     stages{
         stage("clone"){
             steps{
