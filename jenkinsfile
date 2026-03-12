@@ -1,30 +1,27 @@
-pipeline {
+pipeline{
     agent any
-
-    stages {
-        stage('checkout') {
-            steps {
-                checkout scm
+    stages{
+        stage("clone"){
+            steps{
+             sh "git clone https://github.com/sbtalk71/kube-jenkins-app.git"
             }
         }
-
-        stage('compile') {
-            steps {
-                bat 'mvn clean compile'
+        stage("compile"){
+            steps{
+            sh "mvn clean compile"
             }
         }
-
-        stage('package') {
-            steps {
-                bat 'mvn clean package -DskipTests'
+ 
+         stage("package"){
+            steps{
+            sh "mvn package"
             }
         }
-
-        stage('docker build') {
-            steps {
-                bat 'docker build -t kube-jenkins-app:%BUILD_NUMBER% .'
-            }
+       stage("docker build"){
+                   steps{
+                   sh "docker build -t kube-jenkins-app:${BUILD_NUMBER} ."
+                   }
+               }
         }
-    }
+ 
 }
-``
